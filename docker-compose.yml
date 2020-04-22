@@ -1,0 +1,30 @@
+version: "3.7"
+
+services:
+
+    api:
+        build: ./api
+        container_name: api
+        restart: always
+        environment:
+            - APP_NAME= BackEndApp
+        expose:
+            - 8080
+
+    client:
+        build: ./client
+        container_name: client
+        restart: always
+        environment:
+            - APP_NAME= FrontEndApp
+        expose:
+            - 6060
+        links:
+            - api
+    
+    nginx:
+        build: ./nginx
+        container_name: nginxfs
+        restart: always
+        ports:
+            - "80:80"
