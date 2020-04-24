@@ -1,0 +1,38 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: app-svc
+spec:
+  selector:
+    role: app
+  ports:
+    - protocol: TCP
+      port: 9080
+      targetPort: 80
+  type: LoadBalancer
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app
+  labels:
+    role: app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      role: app
+  template:
+    metadata:
+      labels:
+        role: app
+    spec:
+      containers:
+      - name: api
+        image: gcr.io/newsflash-275021/api:v1 #image must be created with docker then push to container registry
+      - name: client
+        image: gcr.io/newsflash-275021/client:v1 #image must be created with docker then push to container registry
+      - name: nginx
+        image: gcr.io/newsflash-275021/nginx:v1 #image must be created with docker then push to container registry
+        ports:
+         - containerPort: 80

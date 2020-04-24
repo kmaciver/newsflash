@@ -1,0 +1,13 @@
+FROM python:3.7.2-stretch
+
+WORKDIR /client
+
+ADD . /client
+
+RUN pip install uwsgi
+
+RUN pip install -r requirements.txt
+
+EXPOSE 6060
+
+CMD ["uwsgi","app.ini"]
