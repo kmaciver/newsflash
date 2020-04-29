@@ -8,11 +8,10 @@ steps:
   args: ['build','Kubernetes_Deployment/api/','-t','gcr.io/${_PROJECT}/api:${_VERSION}']
 
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build','Kubernetes_Deployment/client','-t','gcr.io/${_PROJECT}/client:${_VERSION}']
+  args: ['build','Kubernetes_Deployment/client/','-t','gcr.io/${_PROJECT}/client:${_VERSION}']
 
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build','Kubernetes_Deployment/nginx','-t','gcr.io/${_PROJECT}/nginx:${_VERSION}']
-  dir: './nginx'
+  args: ['build','Kubernetes_Deployment/nginx/','-t','gcr.io/${_PROJECT}/nginx:${_VERSION}']
 
 # Push the images
 - name: 'gcr.io/cloud-builders/docker'
