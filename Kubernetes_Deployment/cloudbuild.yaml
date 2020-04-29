@@ -6,15 +6,15 @@ steps:
 # Build the images
 - name: 'gcr.io/cloud-builders/docker'
   args: ['build','-t','gcr.io/${_PROJECT}/api:${_VERSION}',
-  '--source=./${_REPO_NAME}/Kubernetes_Deployment/api/.']
+  '--source=./api/.']
 
 - name: 'gcr.io/cloud-builders/docker'
   args: ['build','-t','gcr.io/${_PROJECT}/client:${_VERSION}',
-  '--source=./${_REPO_NAME}/Kubernetes_Deployment/client/.']
+  '--source=./client/.']
 
 - name: 'gcr.io/cloud-builders/docker'
   args: ['build','-t','gcr.io/${_PROJECT}/nginx:${_VERSION}',
-  '--source=./${_REPO_NAME}/Kubernetes_Deployment/nginx/.']
+  '--source=./nginx/.']
 
 # Push the images
 - name: 'gcr.io/cloud-builders/docker'
