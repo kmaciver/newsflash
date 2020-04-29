@@ -1,0 +1,72 @@
+steps:
+# First Clone from Google Cloud Source Repository
+- name: 'gcr.io/cloud-builders/git'
+  args: ['clone','https://source.developers.google.com/p/${_PROJECT}/r/${_REPO_NAME}']
+
+# Build the images
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build','-t','gcr.io/${_PROJECT}/api:${_VERSION}',
+  '--source=./${_REPO_NAME}/Kubernetes_Deployment/api/.']
+
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build','-t','gcr.io/${_PROJECT}/client:${_VERSION}',
+  '--source=./${_REPO_NAME}/Kubernetes_Deployment/client/.']
+
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build','-t','gcr.io/${_PROJECT}/nginx:${_VERSION}',
+  '--source=./${_REPO_NAME}/Kubernetes_Deployment/nginx/.']
+
+# Push the images
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'gcr.io/${_PROJECT}/api:${_VERSION}']
+
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'gcr.io/${_PROJECT}/client:${_VERSION}']
+
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'gcr.io/${_PROJECT}/nginx:${_VERSION}']
+
+# Update the container image using kubectl set
+- name: 'gcr.io/cloud-builders/kubectl'
+  args:
+    - 'set'
+    - 'images'
+    - 'deployment/${_DEPLOYMENTNAME}'
+    - 'api=gcr.io/${_PROJECT}/api:${_VERSION}'
+  env:
+    - 'CLOUDSDK_COMPUTE_ZONE=${_ZONE}'
+    - 'CLOUDSDK_CONTAINER_CLUSTER=${_GKE_CLUSTER}'
+
+- name: 'gcr.io/cloud-builders/kubectl'
+  args:
+    - 'set'
+    - 'images'
+    - 'deployment/${_DEPLOYMENTNAME}'
+    - 'client=gcr.io/${_PROJECT}/client:${_VERSION}'
+  env:
+    - 'CLOUDSDK_COMPUTE_ZONE=${_ZONE}'
+    - 'CLOUDSDK_CONTAINER_CLUSTER=${_GKE_CLUSTER}'
+
+- name: 'gcr.io/cloud-builders/kubectl'
+  args:
+    - 'set'
+    - 'images'
+    - 'deployment/${_DEPLOYMENTNAME}'
+    - 'nginx=gcr.io/${_PROJECT}/nginx:${_VERSION}'
+  env:
+    - 'CLOUDSDK_COMPUTE_ZONE=${_ZONE}'
+    - 'CLOUDSDK_CONTAINER_CLUSTER=${_GKE_CLUSTER}'
+
+substitutions:
+    # GCP specific configuration
+    _PROJECT: newsflash-275021
+    _ZONE: us-central1-c
+    _GKE_CLUSTER: cluster-1
+    _DEPLOYMENTNAME: app
+    _REPO_NAME: github_kmaciver_newsflash
+
+    # Change when commit
+    _VERSION: v1.0
+
+options:
+    substitutionOption: 'ALLOW_LOOSE'
