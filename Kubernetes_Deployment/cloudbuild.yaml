@@ -5,7 +5,7 @@ steps:
 
 # Build the images
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build',-t','gcr.io/${_PROJECT}/api:${_VERSION}']
+  args: ['build','-t','gcr.io/${_PROJECT}/api:${_VERSION}']
   dir: './api'
 
 - name: 'gcr.io/cloud-builders/docker'
