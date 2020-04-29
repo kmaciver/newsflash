@@ -27,7 +27,7 @@ steps:
 - name: 'gcr.io/cloud-builders/kubectl'
   args:
     - 'set'
-    - 'images'
+    - 'image'
     - 'deployment/${_DEPLOYMENTNAME}'
     - 'api=gcr.io/${_PROJECT}/api:${_VERSION}'
   env:
@@ -37,7 +37,7 @@ steps:
 - name: 'gcr.io/cloud-builders/kubectl'
   args:
     - 'set'
-    - 'images'
+    - 'image'
     - 'deployment/${_DEPLOYMENTNAME}'
     - 'client=gcr.io/${_PROJECT}/client:${_VERSION}'
   env:
@@ -47,7 +47,7 @@ steps:
 - name: 'gcr.io/cloud-builders/kubectl'
   args:
     - 'set'
-    - 'images'
+    - 'image'
     - 'deployment/${_DEPLOYMENTNAME}'
     - 'nginx=gcr.io/${_PROJECT}/nginx:${_VERSION}'
   env:
