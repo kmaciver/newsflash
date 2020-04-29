@@ -5,13 +5,13 @@ steps:
 
 # Build the images
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build','./api','-t','gcr.io/${_PROJECT}/api:${_VERSION}']
+  args: ['build','Kubernetes_Deployment/api/','-t','gcr.io/${_PROJECT}/api:${_VERSION}']
 
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build','./client','-t','gcr.io/${_PROJECT}/client:${_VERSION}']
+  args: ['build','Kubernetes_Deployment/client','-t','gcr.io/${_PROJECT}/client:${_VERSION}']
 
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build','./nginx','-t','gcr.io/${_PROJECT}/nginx:${_VERSION}']
+  args: ['build','Kubernetes_Deployment/nginx','-t','gcr.io/${_PROJECT}/nginx:${_VERSION}']
   dir: './nginx'
 
 # Push the images
