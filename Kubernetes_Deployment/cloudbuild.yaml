@@ -5,16 +5,16 @@ steps:
 
 # Build the images
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build','-t','gcr.io/${_PROJECT}/api:${_VERSION}',
-  '--source=./api/.']
+  args: ['build',-t','gcr.io/${_PROJECT}/api:${_VERSION}']
+  dir: './api'
 
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build','-t','gcr.io/${_PROJECT}/client:${_VERSION}',
-  '--source=./client/.']
+  args: ['build','-t','gcr.io/${_PROJECT}/client:${_VERSION}']
+  dir: './client'
 
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build','-t','gcr.io/${_PROJECT}/nginx:${_VERSION}',
-  '--source=./nginx/.']
+  args: ['build','-t','gcr.io/${_PROJECT}/nginx:${_VERSION}']
+  dir: './nginx'
 
 # Push the images
 - name: 'gcr.io/cloud-builders/docker'
