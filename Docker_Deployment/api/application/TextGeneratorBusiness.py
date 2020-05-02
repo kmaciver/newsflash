@@ -18,7 +18,7 @@ class TextGenerator:
 		x_sample =[]
 		for x in inputs:
 			if x in self.vocab:
-				x_sample.append(self.embedded[self.vocab.index(x)])
+				x_sample.append(self.embedded[list(self.vocab).index(x)])
 			else:
 				x_sample.append(np.zeros(embDim))
 

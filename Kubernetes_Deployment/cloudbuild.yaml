@@ -63,7 +63,7 @@ substitutions:
     _REPO_NAME: github_kmaciver_newsflash
 
     # Change when commit
-    _VERSION: v1.0
+    _VERSION: v2.0
 
 options:
     substitutionOption: 'ALLOW_LOOSE'
