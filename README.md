@@ -20,7 +20,8 @@ Initial model were trained based on Business articles from the AG's News Topic C
 
 
 ## Models
-For predicting next possible candidates a recurrent neural network with LSTMs was used
+For predicting next possible candidates a recurrent neural network with LSTMs was used.
+Scripts are in the **modelTraining** directory.
 
 ## Web Application
 The models runs in a backend of a webpage
