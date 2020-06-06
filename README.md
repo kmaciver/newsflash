@@ -14,6 +14,8 @@ In an era of information and technology, written news is a very important mean o
 
 **Step 5:** Deploy application using Kubernetes on GCP
 
+Check-out this video presentation for the project:
+https://www.youtube.com/watch?v=1wHUIBK3KbU
 
 ## Data
 Initial model were trained based on Business articles from the AG's News Topic Classification Dataset available at: https://datasets.quantumstat.com
