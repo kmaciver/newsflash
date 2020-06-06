@@ -6,7 +6,7 @@ In an era of information and technology, written news is a very important mean o
 
 **[Step 1](https://medium.com/@kmacver/developing-a-end-to-end-nlp-text-generator-application-part-1-92a5f82816b4):** Train NLP models (recurrent and transformers neural networks) on a collection of tens of thousands of news articles to predict the next word of a text.  
 
-**[Step 2](https://medium.com/@kmacver/developing-end-to-end-nlp-text-generator-application-part-2-full-stack-with-flask-uwsgi-and-d46c7579d80c):** Create a FLASK application to run the selected model (Backend)**
+**[Step 2](https://medium.com/@kmacver/developing-end-to-end-nlp-text-generator-application-part-2-full-stack-with-flask-uwsgi-and-d46c7579d80c):** Create a FLASK application to run the selected model (Backend)
 
 **[Step 3](https://medium.com/@kmacver/developing-end-to-end-nlp-text-generator-application-part-3-using-docker-and-deploying-app-2f1ce049eec8):** Create the Webpage where users can write articles and have the next word suggested (Frontend)
 
