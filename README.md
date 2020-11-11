@@ -32,4 +32,4 @@ The models runs in a backend of a webpage
 User can pick the topic it wants to write about and the model sugests probable next words.
 ![](images/webpagetext.PNG)
 
-##Thank your interest in my project
+##Thank your interest in my project!!
